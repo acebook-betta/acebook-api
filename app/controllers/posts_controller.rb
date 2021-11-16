@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     render json: @posts, include: ['user', 'comments.user']
   end
 
-  # GET /posts/1
+  # GET /posts/:id
   def show
     render json: @post, include: ['user', 'comments.user']
   end
@@ -24,16 +24,16 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
+  # PATCH/PUT /posts/:id
   def update
-    if @post.update(post_params)
+    if @post.update(update_post_params)
       render json: @post
     else
       render json: @post.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /posts/1
+  # DELETE /posts/:id
   def destroy
     @post.destroy
   end
@@ -46,6 +46,11 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
+      params.require(:post).permit(:content, :user_id)
+    end
+
+    # Making sure you can only edit the content of the post
+    def update_post_params
       params.require(:post).permit(:content)
     end
 end
