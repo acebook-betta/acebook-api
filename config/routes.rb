@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :users
-  resources :posts
 
-  # maybe nest these inside each other???
+  resources :users
+
+  resources :posts do
+    resources :comments
+  end
+
+  # resources :users do
+  #   resources :posts do
+  #     resources :comments
+  #   end
+  # end
+
 end
