@@ -1,24 +1,18 @@
-# README
+# Using the API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Creating a user
+```
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"user": {"first_name": "Curl", "last_name": "Request", "email": "curl@example.com", "password": "curl"} }' \
+    http://localhost:4000/users
+```
 
-Things you may want to cover:
+## Seeing all users
+```
+curl http://localhost:4000/users 
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Seeing all posts
+```
+curl http://localhost:4000/posts 
+```
