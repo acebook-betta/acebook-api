@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order('created_at DESC')
 
-    render json: @posts, include: ['user', 'likes', 'comments.user', 'likes.user']
+    render json: @posts, include: ['image_url', 'user', 'likes.user', 'comments.user']
   end
 
   # GET /posts/:id
   def show
-    render json: @post, include: ['user', 'likes', 'comments.user']
+    render json: @post, include: ['image_url', 'user', 'likes.user', 'comments.user']
   end
 
   # POST /posts
@@ -46,11 +46,11 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:content, :user_id)
+      params.require(:post).permit(:content, :image, :user_id)
     end
 
     # Making sure you can only edit the content of the post
     def update_post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, :image)
     end
 end
