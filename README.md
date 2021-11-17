@@ -17,10 +17,11 @@ https://acebook-api.herokuapp.com/
 [
     {
         "id": 7,
-        "content": "New post syntax",
+        "content": "updated from postman",
         "image_url": null,
         "created_at": "2021-11-17T19:32:17.302Z",
-        "updated_at": "2021-11-17T19:32:17.302Z",
+        "updated_at": "2021-11-17T20:07:57.736Z",
+        "updated": true,
         "like_count": 0,
         "comment_count": 0,
         "user": {
@@ -37,6 +38,7 @@ https://acebook-api.herokuapp.com/
         "image_url": null,
         "created_at": "2021-11-17T18:18:48.033Z",
         "updated_at": "2021-11-17T18:18:48.033Z",
+        "updated": false,
         "like_count": 1,
         "comment_count": 3,
         "user": {
@@ -50,6 +52,7 @@ https://acebook-api.herokuapp.com/
                 "content": "Updated with curl again",
                 "created_at": "2021-11-17T19:17:24.015Z",
                 "updated_at": "2021-11-17T19:27:24.258Z",
+                "updated": true,
                 "user": {
                     "id": 14,
                     "first_name": "Post",
@@ -61,6 +64,7 @@ https://acebook-api.herokuapp.com/
                 "content": "New curl post",
                 "created_at": "2021-11-17T19:28:04.781Z",
                 "updated_at": "2021-11-17T19:28:04.781Z",
+                "updated": false,
                 "user": {
                     "id": 14,
                     "first_name": "Post",
@@ -72,6 +76,7 @@ https://acebook-api.herokuapp.com/
                 "content": "New syntax",
                 "created_at": "2021-11-17T19:30:07.807Z",
                 "updated_at": "2021-11-17T19:30:07.807Z",
+                "updated": false,
                 "user": {
                     "id": 14,
                     "first_name": "Post",
@@ -98,6 +103,7 @@ https://acebook-api.herokuapp.com/
         "image_url": null,
         "created_at": "2021-11-17T12:22:12.490Z",
         "updated_at": "2021-11-17T12:22:12.490Z",
+        "updated": false,
         "like_count": 5,
         "comment_count": 0,
         "user": {
