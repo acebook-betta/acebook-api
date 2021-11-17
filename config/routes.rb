@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :sessions, only: [:create]
+  post :login, to: 'sessions#create'
+
+  delete :logout, to: 'sessions#destroy'
+
+  get :logged_in, to: 'sessions#logged_in'
+  # GET /logged_in
+  # Checks if the user has a session cookie (which we generate after a login)
 
   resources :posts do
     resources :comments, :only => [:create]

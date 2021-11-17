@@ -2,6 +2,52 @@
 
 https://acebook-api.herokuapp.com/
 
+
+# Users
+
+## Creating a user (registering)
+```
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"user": {"first_name": "Curl", "last_name": "Request", "email": "curl@example.com", "password": "curl"} }' \
+    https://acebook-api.herokuapp.com/users
+```
+
+## Seeing all users
+```
+curl https://acebook-api.herokuapp.com/users 
+```
+
+## Seeing a specific user
+```
+curl https://acebook-api.herokuapp.com/users/:id
+```
+
+## Updating a user
+```
+curl -X PUT -H "Content-Type: application/json" \
+    -d '{"user": {"first_name": "Curl", "last_name": "Updated", "email": "curl@example.com", "password": "updated"} }' \
+    https://acebook-api.herokuapp.com/users/:id
+```
+
+## Deleting a user - DELETES ALL POSTS AND COMMENTS
+```
+curl -X DELETE https://acebook-api.herokuapp.com/users/:id
+```
+
+# Sessions
+
+## Logging in
+```
+curl -v -X POST -H "Content-Type: application/json" \
+    -d '{"session": {"email": "abc123@example.com", "password": "abc123"}}' \
+    https://acebook-api.herokuapp.com/login
+```
+
+## Logging out
+```
+curl -v -X DELETE http://localhost:4000/logout
+```
+
 # Posts
 
 ## Seeing all posts
@@ -32,38 +78,6 @@ curl -X PUT -H "Content-Type: application/json" \
 ```
 curl -X DELETE https://acebook-api.herokuapp.com/posts/:id
 ```
-
-# Users
-
-## Creating a user
-```
-curl -X POST -H "Content-Type: application/json" \
-    -d '{"user": {"first_name": "Curl", "last_name": "Request", "email": "curl@example.com", "password": "curl"} }' \
-    https://acebook-api.herokuapp.com/users
-```
-
-## Seeing all users
-```
-curl https://acebook-api.herokuapp.com/users 
-```
-
-## Seeing a specific user
-```
-curl https://acebook-api.herokuapp.com/users/:id
-```
-
-## Updating a user
-```
-curl -X PUT -H "Content-Type: application/json" \
-    -d '{"user": {"first_name": "Curl", "last_name": "Updated", "email": "curl@example.com", "password": "updated"} }' \
-    https://acebook-api.herokuapp.com/users/:id
-```
-
-## Deleting a user - DELETES ALL POSTS AND COMMENTS
-```
-curl -X DELETE https://acebook-api.herokuapp.com/users/:id
-```
-
 
 # Comments
 
