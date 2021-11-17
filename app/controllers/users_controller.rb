@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  # GET /users/1
+  # GET /users/:id
   def show
     render json: @user
   end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
+  # PATCH/PUT /users/:id
   def update
     if @user.update(user_params)
       render json: @user
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
+  # DELETE /users/:id
   def destroy
     @user.destroy
   end
@@ -46,6 +46,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password_digest)
+      params.require(:user).permit(:first_name, :last_name, :email, :password)
     end
 end
