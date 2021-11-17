@@ -101,6 +101,10 @@ curl -X POST -H "Content-Type: application/json" \
 curl -X DELETE https://acebook-api.herokuapp.com/likes/:id
 ```
 
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"session": {"email": "curl@example.com", "password": "curl"}}' \
+    http://localhost:4000/sessions
+
 # Other possible ways of creating posts/comments? - NOT IMPLEMENTED: DON'T TRY THESE
 ```
 curl -X POST -H "Content-Type: application/json" \

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :sessions, only: [:create]
+
   resources :posts do
     resources :comments, :only => [:create]
     resources :likes, :only => [:create]
@@ -12,8 +14,7 @@ Rails.application.routes.draw do
   resources :comments, :only => [:update, :destroy]
   # PUT /comments/:id => comments#update
   # DELETE /comments/:id => comments#destroy
-  resources :likes, :only => [:update, :destroy]
-  # PUT /likes/:id => likes#update
+  resources :likes, :only => [:destroy]
   # DELETE /likes/:id => likes#destroy
 
 end
