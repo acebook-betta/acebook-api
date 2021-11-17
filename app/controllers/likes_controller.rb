@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_comment, only: [:update, :destroy]
+  before_action :set_like, only: [:destroy]
 
   # POST /posts/:post_id/likes
   def create
