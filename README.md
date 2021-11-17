@@ -88,7 +88,6 @@ https://acebook-api.herokuapp.com/
             {
                 "id": 9,
                 "created_at": "2021-11-17T19:06:17.056Z",
-                "updated_at": "2021-11-17T19:06:17.056Z",
                 "user": {
                     "id": 14,
                     "first_name": "Post",
@@ -116,7 +115,6 @@ https://acebook-api.herokuapp.com/
             {
                 "id": 3,
                 "created_at": "2021-11-17T16:28:19.028Z",
-                "updated_at": "2021-11-17T16:28:19.028Z",
                 "user": {
                     "id": 5,
                     "first_name": "Curl",
@@ -126,7 +124,6 @@ https://acebook-api.herokuapp.com/
             {
                 "id": 4,
                 "created_at": "2021-11-17T16:29:23.697Z",
-                "updated_at": "2021-11-17T16:29:23.697Z",
                 "user": {
                     "id": 5,
                     "first_name": "Curl",
@@ -136,7 +133,6 @@ https://acebook-api.herokuapp.com/
             {
                 "id": 5,
                 "created_at": "2021-11-17T16:29:44.889Z",
-                "updated_at": "2021-11-17T16:29:44.889Z",
                 "user": {
                     "id": 5,
                     "first_name": "Curl",
@@ -146,7 +142,6 @@ https://acebook-api.herokuapp.com/
             {
                 "id": 6,
                 "created_at": "2021-11-17T16:30:04.208Z",
-                "updated_at": "2021-11-17T16:30:04.208Z",
                 "user": {
                     "id": 5,
                     "first_name": "Curl",
@@ -156,7 +151,6 @@ https://acebook-api.herokuapp.com/
             {
                 "id": 10,
                 "created_at": "2021-11-17T19:07:53.558Z",
-                "updated_at": "2021-11-17T19:07:53.558Z",
                 "user": {
                     "id": 14,
                     "first_name": "Post",
