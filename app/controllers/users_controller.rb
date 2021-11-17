@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      render json: @user, status: :created, location: @user
+      render json: @user, status: :created, include: ['user']
     else
       render json: @user.errors, status: :unprocessable_entity
     end
