@@ -7,6 +7,6 @@ class PostSerializer < ActiveModel::Serializer
   has_many :likes
 
   def image_url
-    return rails_blob_path(object.image, only_path: true)
+    return rails_blob_path(object.image, only_path: true) if object.image.attached?
   end
 end
