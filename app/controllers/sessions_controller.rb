@@ -1,13 +1,16 @@
 class SessionsController < ApplicationController
+  before_action :prevent_logged_in_user, only: [:create]
+  before_action :require_logged_in_user, only: [:destroy]
 
   def create
-    user = User.find_by(email: params[:session][:email]).try(:authenticate, params[:session][:password])
+    user = User.find_by(email: params[:session][:email])
+    .try(:authenticate, params[:session][:password])
     
     if user
       session[:user_id] = user.id
       render json: user, status: :created, include: ['user']
     else
-      render json: { errors: "Invalid email or password", status: :unauthorized }
+      render json: { errors: "Invalid email or password" }, status: :unauthorized 
     end
   end
 
@@ -18,14 +21,9 @@ class SessionsController < ApplicationController
 
   def logged_in
     if @current_user
-      render json: {
-        logged_in: true,
-        user: @current_user
-      }
+      render json: { logged_in: true, user: @current_user }
     else
-      render json: {
-        logged_in: false
-      }
+      render json: { logged_in: false }
     end
   end
 end

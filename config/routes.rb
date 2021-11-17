@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   resources :likes, :only => [:destroy]
   # DELETE /likes/:id => likes#destroy
 
+  root to: 'posts#index'
 end

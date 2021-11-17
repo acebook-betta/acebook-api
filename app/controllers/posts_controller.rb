@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+  before_action :require_logged_in_user, only: [:create]
   before_action :set_post, only: [:show, :update, :destroy]
+  before_action :authorize, only: [:update, :destroy]
 
   # GET /posts
   def index
@@ -15,7 +17,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: @current_user.id))
 
     if @post.save
       render json: @post, status: :created, location: @post
@@ -26,7 +28,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/:id
   def update
-    if @post.update(update_post_params)
+    if @post.update(post_params)
       render json: @post
     else
       render json: @post.errors, status: :unprocessable_entity
@@ -39,18 +41,17 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:content, :image, :user_id)
+      params.require(:post).permit(:content, :image)
     end
 
-    # Making sure you can only edit the content of the post
-    def update_post_params
-      params.require(:post).permit(:content, :image)
+    def authorize
+      unless @current_user.id = @post.user_id
+        render json: { errors: "You don't have permission to do that" }, status: :unauthorized 
+      end
     end
 end

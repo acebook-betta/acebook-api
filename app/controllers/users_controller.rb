@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in_user, only: [:index, :show]
   before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authorize, only: [:update, :destroy]
 
   # GET /users
   def index
@@ -48,5 +50,11 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password)
+    end
+
+    def authorize
+      unless @current_user.id = params[:id]
+        render json: { errors: "You don't have permission to do that" }, status: :unauthorized 
+      end
     end
 end
