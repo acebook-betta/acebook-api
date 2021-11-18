@@ -40,9 +40,9 @@ module AcebookApi
     # Enabling cookies
     config.middleware.use ActionDispatch::Cookies
 
-    # Not sure if this is working
     if Rails.env == "production"
-      config.middleware.use ActionDispatch::Session::CookieStore, key: '_acebook', domain: "https://acebook-api.herokuapp.com"
+      config.middleware.use ActionDispatch::Session::CookieStore, key: '_acebook',
+      domain: "https://acebook-api.herokuapp.com", secure: true
     else
       config.middleware.use ActionDispatch::Session::CookieStore, key: '_acebook'
     end

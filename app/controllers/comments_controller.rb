@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
+  before_action :require_logged_in_user, only: [:create]
   before_action :set_comment, only: [:update, :destroy]
+  before_action :authorize, only: [:update, :destroy]
 
   # POST /posts/:post_id/comments
   def create
-    @comment = Comment.new(comment_params.merge(post_id: params[:post_id]))
+    @comment = Comment.new(
+      comment_params.merge(user_id: @current_user.id, post_id: params[:post_id])
+    )
 
     if @comment.save
       render json: @comment, status: :created
@@ -32,6 +36,12 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:content, :user_id)
+      params.require(:comment).permit(:content)
+    end
+
+    def authorize
+      unless @current_user.id = @comment.user_id
+        render json: { errors: "You don't have permission to do that" }, status: :unauthorized 
+      end
     end
 end
