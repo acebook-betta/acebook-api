@@ -162,6 +162,12 @@ https://acebook-api.herokuapp.com/
 ]
 ```
 
+# :warning: If using fetch make sure to include the following line:
+```
+fetch('https://acebook-api.herokuapp.com' {
+   credentials: 'include' 
+})
+```
 # Users
 
 ## Creating a user (registering)
@@ -205,6 +211,11 @@ curl -X POST -H "Content-Type: application/json" \
 ## Logging out
 ```
 curl -X DELETE https://acebook-api.herokuapp.com/logout
+```
+
+## Seeing if a user is logged in
+```
+curl https://acebook-api.herokuapp.com/logged_in
 ```
 
 # Posts
