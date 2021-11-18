@@ -42,7 +42,7 @@ module AcebookApi
 
     if Rails.env == "production"
       config.middleware.use ActionDispatch::Session::CookieStore, key: '_acebook',
-      domain: "https://acebook-api.herokuapp.com"
+      domain: "acebook-api.herokuapp.com"
     else
       config.middleware.use ActionDispatch::Session::CookieStore, key: '_acebook'
     end
