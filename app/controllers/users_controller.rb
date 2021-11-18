@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :prevent_logged_in_user, only: [:create]
   before_action :require_logged_in_user, only: [:index, :show]
   before_action :set_user, only: [:show, :update, :destroy]
   before_action :authorize, only: [:update, :destroy]
