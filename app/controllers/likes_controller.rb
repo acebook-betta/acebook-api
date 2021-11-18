@@ -4,9 +4,14 @@ class LikesController < ApplicationController
   before_action :authorize, only: [:destroy]
   before_action :prevent_duplicates, only: [:create]
 
-  # POST /posts/:post_id/likes
   def create
-    @like = Like.new(user_id: @current_user.id, post_id: params[:post_id])
+    if params[:comment_id]
+      @like = Like.new(comment_id: params[:comment_id], user_id: @current_user.id)
+    elsif params[:post_id]
+      @like = Like.new(post_id: params[:post_id], user_id: @current_user.id)
+    else
+      render json: { status: 422 }
+    end
 
     if @like.save
       render json: @like, status: :created, include: ['like']
@@ -31,7 +36,16 @@ class LikesController < ApplicationController
       end
     end
 
+    def like_parmas
+      return 
+    end
+
     def prevent_duplicates
+      if params[:comment_id]
+        if Like.find_by(comment_id: params[:comment_id], user_id: @current_user.id)
+          render json: { errors: "You have already liked that comment" }, status: :unauthorized
+        end
+      end
       if Like.find_by(post_id: params[:post_id], user_id: @current_user.id)
         render json: { errors: "You have already liked that post" }, status: :unauthorized 
       end

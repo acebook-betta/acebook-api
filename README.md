@@ -1,160 +1,101 @@
-# Acebook API
+# Acebook API - https://acebook-api.herokuapp.com/
+
 An API for interacting with https://acebook-react.herokuapp.com/
 Built with rails using Postgresql and session cookies for authentication.
 
 # Using the API
-https://acebook-api.herokuapp.com/
 
+## Requests
 * Users must be logged in to see users and their profiles
 * Users must be logged in to create a post, comment, or like
 * User can only like a post once
 * User can only edit and delete their own posts, likes, and comments
-
 * API expects "Content-Type: application/json" header for requests with a body
 
-# Example response: GET /posts
+## Responses
+* For actions where you are creating, it returns an object on success
+* On fail, it returns the relevant status code and a descriptive error message
+* Data is nested appropriately for use in the front end
+
+## Example response: GET /posts
+
+### Posts are sorted newest first
 ```json
 [
     {
-        "id": 7,
-        "content": "updated from postman",
+        "id": 2,
+        "content": "Hello github",
         "image_url": null,
-        "created_at": "2021-11-17T19:32:17.302Z",
-        "updated_at": "2021-11-17T20:07:57.736Z",
-        "updated": true,
+        "created_at": "2021-11-18T20:46:15.119Z",
+        "updated_at": "2021-11-18T20:46:15.119Z",
+        "updated": false,
         "like_count": 0,
         "comment_count": 0,
         "user": {
-            "id": 14,
-            "first_name": "Post",
-            "last_name": "Man"
+            "id": 2,
+            "first_name": "Git",
+            "last_name": "Hub"
         },
         "comments": [],
         "likes": []
     },
     {
-        "id": 6,
-        "content": "Post man post",
+        "id": 1,
+        "content": "Hello again",
         "image_url": null,
-        "created_at": "2021-11-17T18:18:48.033Z",
-        "updated_at": "2021-11-17T18:18:48.033Z",
+        "created_at": "2021-11-18T20:20:23.446Z",
+        "updated_at": "2021-11-18T20:20:23.446Z",
         "updated": false,
-        "like_count": 1,
-        "comment_count": 3,
+        "like_count": 2,
+        "comment_count": 1,
         "user": {
-            "id": 14,
-            "first_name": "Post",
-            "last_name": "Man"
+            "id": 1,
+            "first_name": "New",
+            "last_name": "User"
         },
         "comments": [
             {
-                "id": 6,
-                "content": "Updated with curl again",
-                "created_at": "2021-11-17T19:17:24.015Z",
-                "updated_at": "2021-11-17T19:27:24.258Z",
+                "id": 1,
+                "content": "updated",
+                "created_at": "2021-11-18T20:31:26.358Z",
+                "updated_at": "2021-11-18T20:32:40.108Z",
                 "updated": true,
+                "like_count": 1,
                 "user": {
-                    "id": 14,
-                    "first_name": "Post",
-                    "last_name": "Man"
-                }
-            },
-            {
-                "id": 7,
-                "content": "New curl post",
-                "created_at": "2021-11-17T19:28:04.781Z",
-                "updated_at": "2021-11-17T19:28:04.781Z",
-                "updated": false,
-                "user": {
-                    "id": 14,
-                    "first_name": "Post",
-                    "last_name": "Man"
-                }
-            },
-            {
-                "id": 8,
-                "content": "New syntax",
-                "created_at": "2021-11-17T19:30:07.807Z",
-                "updated_at": "2021-11-17T19:30:07.807Z",
-                "updated": false,
-                "user": {
-                    "id": 14,
-                    "first_name": "Post",
-                    "last_name": "Man"
-                }
+                    "id": 1,
+                    "first_name": "New",
+                    "last_name": "User"
+                },
+                "likes": [
+                    {
+                        "id": 2,
+                        "created_at": "2021-11-18T20:35:04.854Z",
+                        "user": {
+                            "id": 1,
+                            "first_name": "New",
+                            "last_name": "User"
+                        }
+                    }
+                ]
             }
         ],
         "likes": [
             {
-                "id": 9,
-                "created_at": "2021-11-17T19:06:17.056Z",
+                "id": 1,
+                "created_at": "2021-11-18T20:28:19.514Z",
                 "user": {
-                    "id": 14,
-                    "first_name": "Post",
-                    "last_name": "Man"
+                    "id": 1,
+                    "first_name": "New",
+                    "last_name": "User"
                 }
-            }
-        ]
-    },
-    {
-        "id": 5,
-        "content": "Created with curl",
-        "image_url": null,
-        "created_at": "2021-11-17T12:22:12.490Z",
-        "updated_at": "2021-11-17T12:22:12.490Z",
-        "updated": false,
-        "like_count": 5,
-        "comment_count": 0,
-        "user": {
-            "id": 1,
-            "first_name": "Jane",
-            "last_name": "Jones"
-        },
-        "comments": [],
-        "likes": [
+            },
             {
                 "id": 3,
-                "created_at": "2021-11-17T16:28:19.028Z",
+                "created_at": "2021-11-18T21:05:39.650Z",
                 "user": {
-                    "id": 5,
-                    "first_name": "Curl",
-                    "last_name": "Updated"
-                }
-            },
-            {
-                "id": 4,
-                "created_at": "2021-11-17T16:29:23.697Z",
-                "user": {
-                    "id": 5,
-                    "first_name": "Curl",
-                    "last_name": "Updated"
-                }
-            },
-            {
-                "id": 5,
-                "created_at": "2021-11-17T16:29:44.889Z",
-                "user": {
-                    "id": 5,
-                    "first_name": "Curl",
-                    "last_name": "Updated"
-                }
-            },
-            {
-                "id": 6,
-                "created_at": "2021-11-17T16:30:04.208Z",
-                "user": {
-                    "id": 5,
-                    "first_name": "Curl",
-                    "last_name": "Updated"
-                }
-            },
-            {
-                "id": 10,
-                "created_at": "2021-11-17T19:07:53.558Z",
-                "user": {
-                    "id": 14,
-                    "first_name": "Post",
-                    "last_name": "Man"
+                    "id": 2,
+                    "first_name": "Git",
+                    "last_name": "Hub"
                 }
             }
         ]
@@ -168,6 +109,8 @@ fetch('https://acebook-api.herokuapp.com' {
    credentials: 'include' 
 })
 ```
+## This enables your client to store and send the cookie from the server so that you can be authenticated on subsequent requests.
+
 # Users
 
 ## Creating a user (registering)
@@ -261,11 +204,11 @@ curl -X POST -H "Content-Type: application/json" \
 ## Updating a comment
 ```
 curl -X PUT -H "Content-Type: application/json" \
-    -d '{"content": "Updated with curl"}' \
+    -d '{ "comment": {"content": "Updated with curl"} }' \
     https://acebook-api.herokuapp.com/comments/:id
 ```
 
-## Deleting a comment
+## Deleting a comment - Deletes all likes for that comment
 ```
 curl -X DELETE https://acebook-api.herokuapp.com/comments/:id
 ```
@@ -273,9 +216,14 @@ curl -X DELETE https://acebook-api.herokuapp.com/comments/:id
 
 # Likes
 
-## Creating a like
+## Liking a post
 ```
 curl -X POST https://acebook-api.herokuapp.com/posts/:post_id/likes
+```
+
+## Liking a comment
+```
+curl -X POST https://acebook-api.herokuapp.com/comments/:comment_id/likes
 ```
 
 ## Deleting a like
