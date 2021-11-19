@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params.merge(user_id: @current_user.id))
 
     if @post.save
-      render json: @post, status: :created
+      render json: @post, status: :created, include: ['user']
     else
       render json: @post.errors, status: :unprocessable_entity
     end
