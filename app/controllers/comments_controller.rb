@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     )
 
     if @comment.save
-      render json: @comment, status: :created
+      render json: @comment, status: :created, include: ['comment']
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/:id
   def update
     if @comment.update(comment_params)
-      render json: @comment
+      render json: @comment, include: ['comment']
     else
       render json: @comment.errors, status: :unprocessable_entity
     end

@@ -7,12 +7,12 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order('created_at DESC')
 
-    render json: @posts, include: ['image_url', 'user', 'likes.user', 'comments.user']
+    render json: @posts, include: ['image_url', 'user', 'likes.user', 'comments.user', 'comments.likes', 'comments.likes.user']
   end
 
   # GET /posts/:id
   def show
-    render json: @post, include: ['image_url', 'user', 'likes.user', 'comments.user']
+    render json: @post, include: ['image_url', 'user', 'likes.user', 'comments.user', 'comments.likes', 'comments.likes.user']
   end
 
   # POST /posts

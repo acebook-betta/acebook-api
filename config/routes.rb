@@ -17,11 +17,13 @@ Rails.application.routes.draw do
   # POST /posts/:post_id/comments => comments#create
   # POST /posts/:post_id/likes => likes#create
 
-  resources :comments, :only => [:update, :destroy]
+  resources :comments, :only => [:update, :destroy] do
+    resources :likes, :only => [:create]
+  end
   # PUT /comments/:id => comments#update
   # DELETE /comments/:id => comments#destroy
+  # POST /comments/:comment_id/likes => likes#create
+
   resources :likes, :only => [:destroy]
   # DELETE /likes/:id => likes#destroy
-
-  root to: 'posts#index'
 end
