@@ -282,3 +282,11 @@ curl -X POST https://acebook-api.herokuapp.com/posts/:post_id/likes
 ```
 curl -X DELETE https://acebook-api.herokuapp.com/likes/:id
 ```
+
+# Using an external host
+Instructions for hosting on heroku
+- Install heroku on your computer. For a mac: $ brew tap heroku/brew && brew install heroku
+- Create a heroku account: $ heroku login. Then follow the instructions for creating an account/logging in
+- From your project directory, you can push your code manually to heroku: $ git push heroku HEAD:main. Open the url in your browser from your terminal: $ heroku login
+- Or, login to the heroku website and connect your heroku account to your github repo via the 'Deploy' tab. 
+
